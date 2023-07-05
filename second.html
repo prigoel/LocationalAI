@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spotify Quiz</title>
+    <style>
+        .question {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Spotify Quiz</h1>
+
+    <div class="question">
+        <p>1. Which artist has the most monthly listeners on Spotify as of September 2021?</p>
+        <ol type="A">
+            <li><button onclick="checkAnswer('a')">Justin Bieber</button></li>
+            <li><button onclick="checkAnswer('b')">BTS</button></li>
+            <li><button onclick="checkAnswer('c')">Ariana Grande</button></li>
+            <li><button onclick="checkAnswer('d')">Ed Sheeran</button></li>
+        </ol>
+    </div>
+
+    <div class="question">
+        <p>2. What was the most-streamed song on Spotify in 2020?</p>
+        <ol type="A">
+            <li><button onclick="checkAnswer('a')">Blinding Lights - The Weeknd</button></li>
+            <li><button onclick="checkAnswer('b')">Dance Monkey - Tones and I</button></li>
+            <li><button onclick="checkAnswer('c')">Dynamite - BTS</button></li>
+            <li><button onclick="checkAnswer('d')">Watermelon Sugar - Harry Styles</button></li>
+        </ol>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function checkAnswer(answer) {
+            let resultDiv = document.getElementById("result");
+
+            if (answer === 'a' && answer === 'c') {
+                resultDiv.innerHTML = "<p>Correct answers! Well done!</p>";
+            } else {
+                resultDiv.innerHTML = "<p>Incorrect answers. Please try again.</p>";
+            }
+        }
+    </script>
+</body>
+</html>

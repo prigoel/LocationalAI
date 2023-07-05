@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-size: 20px;
+      }
+      #output {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="dataForm">
+      Select your group:<br>
+      <select name="groupNumber" required>
+        <option value="">--Please choose an option--</option>
+        <option value="Group 1">Group 1</option>
+        <option value="Group 2">Group 2</option>
+        <option value="Group 3">Group 3</option>
+        <option value="Group 4">Group 4</option>
+        <option value="Group 5">Group 5</option>
+        <option value="Group 6">Group 6</option>
+        <option value="Group 7">Group 7</option>
+        <option value="Group 8">Group 8</option>
+        <option value="Group 9">Group 9</option>
+        <option value="Group 10">Group 10</option>
+        <option value="Group 11">Group 11</option>
+      </select>
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+
+    <div id="output"></div>
+
+    <script>
+      document.getElementById('dataForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var groupNumber = document.getElementsByName('groupNumber')[0].value;
+
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            var location = position.coords.latitude + ', ' + position.coords.longitude;
+            google.script.run.uploadData(groupNumber, location);
+            document.getElementById('output').textContent = 'Thank you, Find the next QR code in Lakshya';
+          },
+          function(error) {
+            console.error("Error obtaining geolocation: " + error.message);
+            google.script.run.uploadData(groupNumber, "Location not available");
+            document.getElementById('output').textContent = 'Thank you, Find the next QR code in Lakshya';
+          },
+          {timeout: 10000}
+        );
+      });
+    </script>
+
+    <script>
+      document.getElementById('dataForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        window.location.href = 'second.html'
+      });
+    </script>
+  </body>
+</html>
